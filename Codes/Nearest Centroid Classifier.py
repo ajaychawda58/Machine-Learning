@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[4]:
-
-
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 import pandas as pd
@@ -22,7 +19,7 @@ test_gender = np.array(dataset1.Gender)
 length = int(len(dataset.Height))
 
 
-# In[5]:
+#Nearest Centroid classifier function
 
 
 def nearest_centroid (train_set, test_set):
@@ -76,23 +73,17 @@ def nearest_centroid (train_set, test_set):
             if(test_gender[i] == -1):
                 accuracy += 1
 
-
+    #model accuracy
     check_accuracy = ((accuracy) * 100)/test_length
     print(' The accuracy of the nearest centroid classifier is :', check_accuracy)
 
 
 
 
-# In[6]:
-
+# calling the ncc function
+# dataset - Training Data
+# dataset1 - Test Data
 
 nearest_centroid(dataset, dataset1)
 
 
-# In[ ]:
-
-
-
-
-
-# In[ ]:

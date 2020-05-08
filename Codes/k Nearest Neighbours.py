@@ -1,19 +1,15 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[84]:
-
-
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
 import pandas as pd
 import numpy as np
 import math
-dataset = pd.read_csv('C:/users/inwin/downloads/DWH_Training.csv',
-                      names = ['Height','Weight','Gender'])
+dataset = pd.read_csv('C:/users/inwin/downloads/DWH_Training.csv',names = ['Height','Weight','Gender'])
 
 
-# In[85]:
+# random-shuffle
 
 
 mapIndexPosition = list(zip(dataset.Height, dataset.Weight, dataset.Gender))
@@ -21,7 +17,7 @@ np.random.shuffle(mapIndexPosition)
 dataset.Height, dataset.Weight, dataset.Gender = zip(*mapIndexPosition)
 
 
-# In[86]:
+# separating attributes and classes
 
 
 height = np.array(dataset.Height)
@@ -30,14 +26,14 @@ org_gender = np.array(dataset.Gender)
 pred_gender = np.zeros(232)
 
 
-# In[87]:
+#euclidean distance calculation
 
 
 def dist_points(x1,y1,x2,y2):
     return math.sqrt( (x2 - x1)**2 + (y2 - y1)**2 );
 
 
-# In[154]:
+#distance calculation
 
 
 def predict(test_height,test_weight,k):
@@ -54,7 +50,7 @@ def predict(test_height,test_weight,k):
     return ( 1 if sum>=0 else -1)
 
 
-# In[190]:
+#kNN Function
 
 
 def k_nearest_neighbours(train_set,test_set,k,c):
@@ -68,17 +64,14 @@ def k_nearest_neighbours(train_set,test_set,k,c):
         
         if org_gender[i+slp[c]] == pred_gender:
              accuracy += 1
-            
         else:
              accuracy += 0
-                    
-    
     check_accuracy = ((accuracy) * 100)/size
     print(check_accuracy,k)       
    
 
 
-# In[191]:
+#cross validation and kNN loop
 
 
 k = [3,5,20]
@@ -90,7 +83,7 @@ for i in range(1,11):
        k_nearest_neighbours(train, test, j,(i-1))   
 
 
-# In[ ]:
+
 
 
 
